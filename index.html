@@ -8,16 +8,19 @@
   <meta property="og:title" content="jayresearcher">
   <meta property="og:description" content="Researcher. Builder. Open source contributor.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#030303">
+  <meta name="theme-color" content="#08080C">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <canvas id="grain" aria-hidden="true"></canvas>
+  <div class="cursor-dot"  aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="progress-bar" aria-hidden="true"></div>
   <div class="scanline" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
 
   <nav class="nav-dots" aria-label="Section navigation">
     <button class="dot active" data-target="0" aria-label="Identity"></button>
@@ -30,19 +33,25 @@
 
     <!-- 01 IDENTITY -->
     <section class="panel" id="panel-0">
+      <div class="aurora" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
       <span class="section-num" aria-hidden="true">01</span>
       <div class="panel-content">
-        <p class="label">// identity</p>
-        <h1 class="name">jayresearcher<span class="cursor" aria-hidden="true">_</span></h1>
-        <p class="tagline">&gt;&nbsp;researcher.&nbsp; builder.&nbsp; open source contributor.</p>
-        <div class="status-bar">
-          <span class="status-item">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            active
-          </span>
-          <span class="status-divider" aria-hidden="true">/</span>
+        <p class="label reveal">// identity</p>
+        <h1 class="name">
+          <span class="name-scramble" data-final="jayresearcher">jayresearcher</span><span class="name-cursor" aria-hidden="true">_</span>
+        </h1>
+        <p class="tagline">
+          <span class="tagline-gt">&gt;&nbsp;</span><span class="typewriter-target" data-text="researcher.  builder.  open source contributor."></span><span class="typewriter-cursor" aria-hidden="true">|</span>
+        </p>
+        <div class="status-bar reveal reveal-d3">
+          <span class="status-item"><span class="pulse-dot" aria-hidden="true"></span>active</span>
+          <span class="status-sep" aria-hidden="true">/</span>
           <span class="status-item">building in public</span>
-          <span class="status-divider" aria-hidden="true">/</span>
+          <span class="status-sep" aria-hidden="true">/</span>
           <span class="status-item">2026</span>
         </div>
       </div>
@@ -52,10 +61,11 @@
     <section class="panel" id="panel-1">
       <span class="section-num" aria-hidden="true">02</span>
       <div class="panel-content">
-        <p class="label">// active projects</p>
+        <p class="label reveal">// active projects</p>
         <div class="projects-grid">
 
-          <a href="https://www.orbiqcloud.com/" target="_blank" rel="noopener noreferrer" class="card">
+          <a href="https://www.orbiqcloud.com/" target="_blank" rel="noopener noreferrer" class="card tilt-card reveal reveal-d1">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="card-top">
               <span class="card-tag">INTELLIGENCE</span>
               <span class="card-arrow">↗</span>
@@ -65,7 +75,8 @@
             <span class="card-url">orbiqcloud.com</span>
           </a>
 
-          <a href="https://www.nodeq.cloud/" target="_blank" rel="noopener noreferrer" class="card">
+          <a href="https://www.nodeq.cloud/" target="_blank" rel="noopener noreferrer" class="card tilt-card reveal reveal-d2">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="card-top">
               <span class="card-tag">VISUALIZATION</span>
               <span class="card-arrow">↗</span>
@@ -83,9 +94,10 @@
     <section class="panel" id="panel-2">
       <span class="section-num" aria-hidden="true">03</span>
       <div class="panel-content">
-        <p class="label">// open source</p>
+        <p class="label reveal">// open source</p>
 
-        <a href="https://github.com/workflow-builder/rek" target="_blank" rel="noopener noreferrer" class="oss-card">
+        <a href="https://github.com/workflow-builder/rek" target="_blank" rel="noopener noreferrer" class="oss-card tilt-card reveal reveal-d1">
+          <div class="card-glow" aria-hidden="true"></div>
           <div class="oss-top">
             <div>
               <span class="oss-tag">PUBLIC · GITHUB</span>
@@ -100,8 +112,8 @@
           </div>
         </a>
 
-        <p class="oss-note">
-          <span class="blink-cursor">&gt;</span>&nbsp; more tools in development. building in public.
+        <p class="oss-note reveal reveal-d2">
+          <span class="blink-cursor" aria-hidden="true">&gt;</span>&nbsp;more tools in development. building in public.
         </p>
       </div>
     </section>
@@ -110,27 +122,27 @@
     <section class="panel" id="panel-3">
       <span class="section-num" aria-hidden="true">04</span>
       <div class="panel-content">
-        <p class="label">// signal</p>
-        <p class="signal-intro">find the signal<br>in the noise.</p>
+        <p class="label reveal">// signal</p>
+        <p class="signal-intro reveal reveal-d1">find the signal<br>in the noise.</p>
 
         <div class="links-list">
-          <a href="https://www.instagram.com/jayresearcher" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://www.instagram.com/jayresearcher" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d2">
             <span class="social-platform">instagram</span>
             <span class="social-handle">@jayresearcher&nbsp;↗</span>
           </a>
-          <div class="link-rule"></div>
-          <a href="https://www.linkedin.com/in/jagadeesh-vasireddy" target="_blank" rel="noopener noreferrer" class="social-link">
+          <div class="link-rule reveal reveal-d2"></div>
+          <a href="https://www.linkedin.com/in/jagadeesh-vasireddy" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d3">
             <span class="social-platform">linkedin</span>
             <span class="social-handle">/in/jagadeesh-vasireddy&nbsp;↗</span>
           </a>
-          <div class="link-rule"></div>
-          <a href="https://github.com/workflow-builder" target="_blank" rel="noopener noreferrer" class="social-link">
+          <div class="link-rule reveal reveal-d3"></div>
+          <a href="https://github.com/workflow-builder" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d4">
             <span class="social-platform">github</span>
             <span class="social-handle">workflow-builder&nbsp;↗</span>
           </a>
         </div>
 
-        <p class="footer-sig">jagadeesh vasireddy · jayresearcher · 2026</p>
+        <p class="footer-sig reveal reveal-d4">jagadeesh vasireddy &middot; jayresearcher &middot; 2026</p>
       </div>
     </section>
 
