@@ -1,67 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-scene="rain">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>jayresearcher</title>
-  <meta name="description" content="Jagadeesh Vasireddy — researcher, builder, open source contributor.">
+  <title>jayresearcher — Jagadeesh Vasireddy</title>
+  <meta name="description" content="Jagadeesh Vasireddy — cybersecurity researcher, builder, cinematographer. Schneider Electric · Greater Boston.">
   <meta property="og:title" content="jayresearcher">
-  <meta property="og:description" content="Researcher. Builder. Open source contributor.">
+  <meta property="og:description" content="Mapping attack surfaces by day. Directing frames by night.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#08080C">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Atmospheric canvas (rain / storm / dust / bokeh / stars) -->
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <!-- Film grain overlay -->
   <canvas id="grain" aria-hidden="true"></canvas>
+
   <div class="cursor-dot"  aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="progress-bar" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
+  <div class="scanline"    aria-hidden="true"></div>
 
   <nav class="nav-dots" aria-label="Section navigation">
     <button class="dot active" data-target="0" aria-label="Identity"></button>
     <button class="dot" data-target="1" aria-label="Projects"></button>
     <button class="dot" data-target="2" aria-label="Open Source"></button>
-    <button class="dot" data-target="3" aria-label="Signal"></button>
+    <button class="dot" data-target="3" aria-label="Photography"></button>
+    <button class="dot" data-target="4" aria-label="Signal"></button>
   </nav>
+
+  <!-- Scene label — top left, changes per panel -->
+  <div class="scene-badge" id="scene-badge" aria-hidden="true">
+    <span class="scene-badge-icon">◈</span>
+    <span class="scene-badge-label" id="scene-label">Night Rain</span>
+  </div>
 
   <main class="scroll-container" id="scroll-container">
 
-    <!-- 01 IDENTITY -->
-    <section class="panel" id="panel-0">
-      <div class="aurora" aria-hidden="true">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-      </div>
+    <!-- ══ 01 · IDENTITY · Rain Scene ══════════════════════════════════ -->
+    <section class="panel" id="panel-0" data-panel="0">
       <span class="section-num" aria-hidden="true">01</span>
       <div class="panel-content">
+
         <p class="label reveal">// identity</p>
+
         <h1 class="name">
           <span class="name-scramble" data-final="jayresearcher">jayresearcher</span><span class="name-cursor" aria-hidden="true">_</span>
         </h1>
-        <p class="tagline">
-          <span class="tagline-gt">&gt;&nbsp;</span><span class="typewriter-target" data-text="researcher.  builder.  open source contributor."></span><span class="typewriter-cursor" aria-hidden="true">|</span>
+
+        <p class="hero-meta reveal reveal-d1">
+          SCHNEIDER ELECTRIC &nbsp;·&nbsp; GREATER BOSTON &nbsp;·&nbsp; CYBERSECURITY
         </p>
+
+        <p class="tagline reveal reveal-d2">
+          <span class="tagline-gt">&gt;&nbsp;</span>
+          <span class="typewriter-target" data-text="researcher.  builder.  open source contributor."></span><span class="typewriter-cursor" aria-hidden="true">|</span>
+        </p>
+
         <div class="status-bar reveal reveal-d3">
           <span class="status-item"><span class="pulse-dot" aria-hidden="true"></span>active</span>
-          <span class="status-sep" aria-hidden="true">/</span>
+          <span class="status-sep">/</span>
           <span class="status-item">building in public</span>
-          <span class="status-sep" aria-hidden="true">/</span>
+          <span class="status-sep">/</span>
           <span class="status-item">2026</span>
         </div>
+
+        <p class="hero-quote reveal reveal-d4">
+          <em>"mapping attack surfaces by day.&nbsp; directing frames by night."</em>
+        </p>
+
+        <div class="scroll-hint" id="scroll-hint">
+          scroll <span class="hint-arr">↓&nbsp; or&nbsp; →</span>
+        </div>
+
       </div>
     </section>
 
-    <!-- 02 ACTIVE PROJECTS -->
-    <section class="panel" id="panel-1">
+    <!-- ══ 02 · PROJECTS · Electric Storm ══════════════════════════════ -->
+    <section class="panel" id="panel-1" data-panel="1">
       <span class="section-num" aria-hidden="true">02</span>
       <div class="panel-content">
+
         <p class="label reveal">// active projects</p>
+
         <div class="projects-grid">
 
           <a href="https://www.orbiqcloud.com/" target="_blank" rel="noopener noreferrer" class="card tilt-card reveal reveal-d1">
@@ -71,7 +97,7 @@
               <span class="card-arrow">↗</span>
             </div>
             <h2 class="card-title">ORBIQ</h2>
-            <p class="card-desc">Corporate domain intelligence. Maps your entire digital footprint — certificate transparency, DNS records, subdomains — before anyone else does.</p>
+            <p class="card-desc">Corporate domain intelligence. Maps your entire digital footprint — cert transparency, DNS, subdomains — before anyone else does.</p>
             <span class="card-url">orbiqcloud.com</span>
           </a>
 
@@ -82,18 +108,24 @@
               <span class="card-arrow">↗</span>
             </div>
             <h2 class="card-title">NODEQ</h2>
-            <p class="card-desc">Career intelligence as an interactive mindmap. Every domain, every path, every skill gap — visualized and explorable across hundreds of fields.</p>
+            <p class="card-desc">Career intelligence as an interactive mindmap. Every domain, every path, every skill gap — visualized across hundreds of fields.</p>
             <span class="card-url">nodeq.cloud</span>
           </a>
 
         </div>
+
+        <p class="panel-quip reveal reveal-d3">
+          <span class="quip-prefix">// </span>tools that do what enterprise software promises&nbsp;—&nbsp;for a fraction of the price.
+        </p>
+
       </div>
     </section>
 
-    <!-- 03 OPEN SOURCE -->
-    <section class="panel" id="panel-2">
+    <!-- ══ 03 · OPEN SOURCE · Golden Hour ══════════════════════════════ -->
+    <section class="panel" id="panel-2" data-panel="2">
       <span class="section-num" aria-hidden="true">03</span>
       <div class="panel-content">
+
         <p class="label reveal">// open source</p>
 
         <a href="https://github.com/workflow-builder/rek" target="_blank" rel="noopener noreferrer" class="oss-card tilt-card reveal reveal-d1">
@@ -105,25 +137,74 @@
             </div>
             <span class="oss-arrow">↗</span>
           </div>
-          <p class="oss-desc">Automated reconnaissance toolkit for ethical hackers and bug bounty hunters. Modular pipelines for subdomain enumeration, HTTP probing, directory scanning, and OSINT — built to move fast without losing depth.</p>
+          <p class="oss-desc">Automated reconnaissance toolkit for ethical hackers and bug bounty hunters. Modular pipelines for subdomain enumeration, HTTP probing, directory scanning, and OSINT.</p>
           <div class="oss-footer">
             <span class="oss-url">github.com/workflow-builder/rek</span>
             <span class="oss-badge">open source</span>
           </div>
         </a>
 
-        <p class="oss-note reveal reveal-d2">
-          <span class="blink-cursor" aria-hidden="true">&gt;</span>&nbsp;more tools in development. building in public.
+        <p class="panel-quip reveal reveal-d2">
+          <span class="quip-prefix">// </span>free forever.&nbsp; because the best recon tool is the one you built yourself.
         </p>
+
+        <p class="oss-note reveal reveal-d3">
+          <span class="blink-cursor" aria-hidden="true">&gt;</span>&nbsp;more tools in development.
+        </p>
+
       </div>
     </section>
 
-    <!-- 04 SIGNAL -->
-    <section class="panel" id="panel-3">
+    <!-- ══ 04 · PHOTOGRAPHY · Blue Hour ════════════════════════════════ -->
+    <section class="panel" id="panel-3" data-panel="3">
       <span class="section-num" aria-hidden="true">04</span>
       <div class="panel-content">
+
+        <p class="label reveal">// through the lens</p>
+
+        <h2 class="lens-title reveal reveal-d1">
+          chasing light<br>
+          <span class="lens-accent">when I'm not</span><br>
+          chasing vulnerabilities.
+        </h2>
+
+        <a href="https://www.instagram.com/chhaaya.films/" target="_blank" rel="noopener noreferrer" class="photo-card tilt-card reveal reveal-d2">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="photo-top">
+            <div>
+              <span class="photo-tag">CINEMATOGRAPHY &amp; PHOTOGRAPHY</span>
+              <h3 class="photo-name">chhaaya.films</h3>
+            </div>
+            <span class="photo-arrow">↗</span>
+          </div>
+          <p class="photo-desc">Visual storytelling through light and shadow. <em>Chhaaya</em> — shadow in Sanskrit — because every great frame starts where light ends.</p>
+          <div class="photo-footer">
+            <span class="photo-url">instagram.com/chhaaya.films</span>
+            <span class="photo-badge">[ available for collabs ]</span>
+          </div>
+        </a>
+
+        <p class="film-stats reveal reveal-d3">
+          <span class="film-bracket">[</span>
+          <span class="film-stat">ISO: always cranked</span>
+          <span class="film-sep">·</span>
+          <span class="film-stat">SHUTTER: relentless</span>
+          <span class="film-sep">·</span>
+          <span class="film-stat">CAFFEINE: critical</span>
+          <span class="film-bracket">]</span>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ══ 05 · SIGNAL · Deep Space ════════════════════════════════════ -->
+    <section class="panel" id="panel-4" data-panel="4">
+      <span class="section-num" aria-hidden="true">05</span>
+      <div class="panel-content">
+
         <p class="label reveal">// signal</p>
-        <p class="signal-intro reveal reveal-d1">find the signal<br>in the noise.</p>
+
+        <p class="signal-intro reveal reveal-d1">found in the wild.<br>approach with curiosity.</p>
 
         <div class="links-list">
           <a href="https://www.instagram.com/jayresearcher" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d2">
@@ -131,18 +212,33 @@
             <span class="social-handle">@jayresearcher&nbsp;↗</span>
           </a>
           <div class="link-rule reveal reveal-d2"></div>
-          <a href="https://www.linkedin.com/in/jagadeesh-vasireddy" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d3">
+          <a href="https://www.instagram.com/chhaaya.films/" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d3">
+            <span class="social-platform">photography</span>
+            <span class="social-handle">@chhaaya.films&nbsp;↗</span>
+          </a>
+          <div class="link-rule reveal reveal-d3"></div>
+          <a href="https://www.linkedin.com/in/jagadeesh-vasireddy" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d4">
             <span class="social-platform">linkedin</span>
             <span class="social-handle">/in/jagadeesh-vasireddy&nbsp;↗</span>
           </a>
-          <div class="link-rule reveal reveal-d3"></div>
+          <div class="link-rule reveal reveal-d4"></div>
           <a href="https://github.com/workflow-builder" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d4">
             <span class="social-platform">github</span>
             <span class="social-handle">workflow-builder&nbsp;↗</span>
           </a>
+          <div class="link-rule reveal reveal-d4"></div>
+          <a href="https://cybergarage.io" target="_blank" rel="noopener noreferrer" class="social-link reveal reveal-d4">
+            <span class="social-platform">blog</span>
+            <span class="social-handle">cybergarage.io&nbsp;↗</span>
+          </a>
         </div>
 
+        <p class="footer-easter reveal reveal-d4">
+          <em>if you scrolled this far, you're either a recruiter or a fellow hacker.&nbsp; hi.</em>
+        </p>
+
         <p class="footer-sig reveal reveal-d4">jagadeesh vasireddy &middot; jayresearcher &middot; 2026</p>
+
       </div>
     </section>
 
